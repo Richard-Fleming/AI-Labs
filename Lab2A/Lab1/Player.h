@@ -18,8 +18,11 @@ public:
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_position;
 	float m_speed;
+	float m_rotateSpeed;
 	float const m_MAX_SPEED;
 	float const m_PI;
+	float m_angleRadians;
+	float m_turn;
 	float m_rotation;
 };
 

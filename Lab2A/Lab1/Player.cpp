@@ -1,18 +1,21 @@
 #include "Player.h"
 
 Player::Player() :
-	m_MAX_SPEED{100.0f},
+	m_MAX_SPEED{10.0f},
 	m_PI{ 3.14159265359f },
 	m_position{0,0},
 	m_speed{0.0f},
-	m_rotation{0.0f}
+	m_rotation{0.0f},
+	m_rotateSpeed{0.0f},
+	m_angleRadians{0.0f},
+	m_turn{3.0f}
 {
 	if (!m_texture.loadFromFile("ASSETS/ufo.png"))
 	{
 		std::cout << "Image load failed" << std::endl;
 	}
 	m_player.setTexture(m_texture);
-	m_player.setOrigin(m_player.getLocalBounds().width / 2, m_player.getLocalBounds().height / 2);
+	m_player.setOrigin(m_player.getGlobalBounds().width / 2, m_player.getGlobalBounds().height / 2);
 
 	srand(time(nullptr));
 }
@@ -23,23 +26,31 @@ Player::~Player()
 
 void Player::increase()
 {
-	if (m_speed < m_MAX_SPEED)
+	
+	if (m_rotateSpeed <= m_MAX_SPEED)
 	{
-		m_speed += 1.0f;
+		m_rotateSpeed = m_rotateSpeed + 0.5;
 	}
 }
 
 void Player::decrease()
 {
-	if (m_speed > 0)
+	if (m_rotateSpeed > 0)
 	{
-		m_speed -= 1.0f;
+		m_rotateSpeed = m_rotateSpeed - 0.5;
 	}
 }
 
 void Player::update(sf::RenderWindow const & t_window, sf::Time dt)
 {
-	m_player.setPosition((m_position.x + cos((m_rotation * m_PI) / 180.0f) * m_speed * (dt.asMilliseconds())), (m_position.y + sin((m_rotation * m_PI) / 180.0f) * m_speed * (dt.asMilliseconds())));
+	m_player.setRotation(m_rotation);
+
+	m_angleRadians = m_rotation * (3.14 / 180);
+	m_velocity.x = cosf(m_angleRadians) * m_rotateSpeed;
+	m_velocity.y = sinf(m_angleRadians) * m_rotateSpeed;
+
+	m_position += m_velocity;
+
 
 	if (m_position.x > t_window.getSize().x + m_player.getScale().x)
 	{
@@ -58,11 +69,14 @@ void Player::update(sf::RenderWindow const & t_window, sf::Time dt)
 	{
 		m_position.y = t_window.getSize().y + m_player.getScale().y / 2;
 	}
+
+
+	m_player.setPosition(m_position);
 }
 
 void Player::increaseRotation()
 {
-	m_rotation += 1;
+	m_rotation += m_turn;
 	if (m_rotation == 360.0)
 	{
 		m_rotation = 0;
@@ -71,7 +85,7 @@ void Player::increaseRotation()
 
 void Player::decreaseRotation()
 {
-	m_rotation -= 1;
+	m_rotation -= m_turn;
 	if (m_rotation == 0.0)
 	{
 		m_rotation = 359.0;
