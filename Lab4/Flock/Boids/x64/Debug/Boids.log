@@ -1,0 +1,25 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Boids.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Boid.cpp
+  Flock.cpp
+C:\Oisin\Projects\Flock\Boids\Boid.cpp(7,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Oisin\Projects\Flock\Boids\Boid.h(44,42): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(44,30): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(55,43): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(55,31): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(59,43): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(59,31): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+C:\Oisin\Projects\Flock\Boids\Flock.cpp(12,21): warning C4267:  'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(44,42): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(44,30): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(55,43): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(55,31): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(59,43): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Boid.h(59,31): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  Pvector.cpp
+C:\Oisin\Projects\Flock\Boids\main.cpp(6,10): error C1083:  Cannot open include file: 'SFML/Window.hpp': No such file or directory
+C:\Oisin\Projects\Flock\Boids\Pvector.cpp(88,19): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Pvector.cpp(88,9): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+C:\Oisin\Projects\Flock\Boids\Pvector.cpp(135,12): warning C4305:  'return': truncation from 'double' to 'float'
+  Generating Code...
+C:\Oisin\Projects\Flock\Boids\Pvector.cpp(140,12): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
