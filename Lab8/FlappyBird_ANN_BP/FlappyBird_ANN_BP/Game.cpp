@@ -202,10 +202,7 @@ void Game::loop()
 				{
 					m_exitGame = true;
 				}
-				if ((sf::Keyboard::Space == event.key.code) && (player))
-				{
-					population.birdSet[0].jump = true;
-				}
+				
 				if (sf::Keyboard::S == event.key.code)
 				{
 					showBirdStats = !showBirdStats;
@@ -304,6 +301,16 @@ void Game::update(float dt)
 		m_window.close();
 	}
 
+	if (player)
+	{
+		float hole = pillarSet[index].upperH - pillarSet[index].lowerY;
+		float center = pillarSet[index].lowerY + hole / 2.0;
+		if (population.birdSet[0].y > center)
+		{
+			population.birdSet[0].jump = true;
+		}
+	}
+
 	for (int i = 0; i < pillarCount; i++)
 	{
 		pillarSet[i].update(dt, pillarSet);
@@ -331,9 +338,9 @@ void Game::update(float dt)
 
 				myTrainingfile << tempString;
 				if (population.birdSet[b].jump)
-					myTrainingfile << ",flap\n";
+					myTrainingfile << ",1\n";
 				else
-					myTrainingfile << ",glide\n";
+					myTrainingfile << ",0\n";
 			}
 		}
 	}

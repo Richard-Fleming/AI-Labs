@@ -49,7 +49,7 @@ void Bird::update(Pillar pillar)
 	{
 		if (jump)
 		{
-			y -= 20;	// Flap!
+			y -= 10;	// Flap!
 //			playerJump = false;
 		}
 	}
